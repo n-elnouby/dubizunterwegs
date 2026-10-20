@@ -9,6 +9,16 @@
 <meta property="og:description" content="Arbeitszeit und Reisekosten nach deutschem Steuerrecht. Deine Daten bleiben auf deinem iPhone.">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="style.css">
+<style>
+.hero-shot{display:flex;justify-content:center}
+.hero-shot img{width:300px;max-width:78vw;height:auto;border-radius:44px;border:10px solid #0b0d12;box-shadow:0 30px 70px rgba(10,20,40,.28);background:#000}
+.gallery{--pad:max(20px,calc((100vw - 1080px)/2 + 20px));display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-inline:var(--pad);padding:8px var(--pad) 28px;-webkit-overflow-scrolling:touch}
+.gallery::after{content:'';flex:0 0 1px}
+.gallery figure{margin:0;flex:0 0 auto;width:240px;scroll-snap-align:start;text-align:center}
+.gallery img{width:100%;height:auto;border-radius:30px;border:7px solid #0b0d12;box-shadow:0 14px 34px rgba(10,20,40,.22);background:#000}
+.gallery figcaption{margin-top:12px;font-size:14px;color:var(--muted)}
+@media (max-width:560px){.gallery figure{width:200px}}
+</style>
 </head>
 <body>
 
@@ -16,6 +26,7 @@
   <div class="wrap">
     <a class="brand" href="index.html"><span class="logo">D</span> DuBizUnterwegs</a>
     <nav class="main">
+      <a href="#screenshots">Screenshots</a>
       <a href="#funktionen">Funktionen</a>
       <a href="#rechner">Rechner</a>
       <a href="#preise">Preise</a>
@@ -38,29 +49,25 @@
       </div>
       <p class="note">Kostenlos starten · iPhone · Deine Daten bleiben auf deinem Gerät</p>
     </div>
-    <div aria-hidden="true">
-      <div class="phone"><div class="screen">
-        <p class="title">Heute</p>
-        <div class="date">Donnerstag, 15. Oktober</div>
-        <div class="card accent">
-          <div class="k">Arbeitszeit läuft</div>
-          <div class="big">5:42 h</div>
-          <div class="k">seit 08:10 · Pause 30 min</div>
-        </div>
-        <div class="card">
-          <div class="k">UNTERWEGS</div>
-          <div style="font-weight:700">Kiel · Kundentermin</div>
-          <div class="chips"><span class="chip">3 Belege</span><span class="chip">1× Tanken</span><span class="chip">142 km</span></div>
-        </div>
-        <div class="actions-mini">
-          <span><i>€</i>Beleg</span><span><i>l</i>Tanken</span><span><i>⚡</i>Laden</span><span><i>+</i>Reise</span>
-        </div>
-        <div class="card" style="margin-top:10px">
-          <div class="row"><span>Pauschale</span><b>28,00 €</b></div>
-          <div class="row"><span>Erstattung</span><b>216,44 €</b></div>
-        </div>
-      </div></div>
+    <div class="hero-shot">
+      <img src="img/heute.webp" width="600" height="1304" alt="DuBizUnterwegs: Tab Heute mit Erfassen, Wochenstunden und Arbeitszeiten" fetchpriority="high">
     </div>
+  </div>
+</section>
+
+<section id="screenshots">
+  <div class="wrap">
+    <h2>So sieht die App aus</h2>
+    <p class="section-lead">Echte Screenshots aus DuBizUnterwegs auf dem iPhone.</p>
+  </div>
+  <div class="gallery" tabindex="0" aria-label="App-Screenshots">
+    <figure><img src="img/heute.webp" width="600" height="1304" loading="lazy" alt="Tab Heute"><figcaption>Heute: Arbeitszeit, Belege, Laden</figcaption></figure>
+    <figure><img src="img/reisen.webp" width="600" height="1304" loading="lazy" alt="Tab Reisen"><figcaption>Dienstreisen mit Pauschale</figcaption></figure>
+    <figure><img src="img/ausgaben.webp" width="600" height="1304" loading="lazy" alt="Tab Ausgaben"><figcaption>Ausgaben nach Kategorie</figcaption></figure>
+    <figure><img src="img/monatsabschluss.webp" width="600" height="1304" loading="lazy" alt="Monatsabschluss"><figcaption>Monatsabschluss mit Checkliste</figcaption></figure>
+    <figure><img src="img/auswertung.webp" width="600" height="1304" loading="lazy" alt="Tab Auswertung"><figcaption>Auswertung und Prüfung</figcaption></figure>
+    <figure><img src="img/statistik.webp" width="600" height="1304" loading="lazy" alt="Statistik"><figcaption>Statistik</figcaption></figure>
+    <figure><img src="img/jahresexport.webp" width="600" height="1304" loading="lazy" alt="Jahresexport"><figcaption>Jahresexport für die Steuer</figcaption></figure>
   </div>
 </section>
 

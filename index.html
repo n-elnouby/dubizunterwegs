@@ -18,12 +18,22 @@
 <style>
 .hero-shot{display:flex;justify-content:center}
 .hero-shot img{width:300px;max-width:78vw;height:auto;border-radius:44px;border:10px solid #0b0d12;box-shadow:0 30px 70px rgba(10,20,40,.28);background:#000}
-.gallery{--pad:max(20px,calc((100vw - 1080px)/2 + 20px));display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-inline:var(--pad);padding:8px var(--pad) 28px;-webkit-overflow-scrolling:touch}
-.gallery::after{content:'';flex:0 0 1px}
-.gallery figure{margin:0;flex:0 0 auto;width:240px;scroll-snap-align:start;text-align:center}
-.gallery img{width:100%;height:auto;border-radius:30px;border:7px solid #0b0d12;box-shadow:0 14px 34px rgba(10,20,40,.22);background:#000}
-.gallery figcaption{margin-top:12px;font-size:14px;color:var(--muted)}
-@media (max-width:560px){.gallery figure{width:200px}}
+.showcase{background:#0b1220;color:#e8edf5;padding:88px 0}
+.showcase h2{color:#fff}
+.showcase .section-lead{color:#a9b4c6}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:72px}
+.story:nth-of-type(even) .story-text{order:2}
+.story-text h3{font-size:clamp(24px,3vw,32px);margin:.2em 0 .4em;color:#fff;line-height:1.15}
+.story-text p{font-size:18px;color:#c9d2e0;max-width:30em}
+.story-text ul{margin:16px 0 0;padding:0;list-style:none}
+.story-text li{padding:6px 0 6px 28px;position:relative;color:#e8edf5}
+.story-text li::before{content:'';position:absolute;left:0;top:13px;width:14px;height:8px;border-left:2.5px solid #5b9bff;border-bottom:2.5px solid #5b9bff;transform:rotate(-45deg)}
+.step-no{color:#5b9bff;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.story-media{display:flex;justify-content:center;padding:40px 0;border-radius:28px;background:radial-gradient(60% 60% at 50% 50%,rgba(91,155,255,.45),rgba(91,155,255,.08) 70%,transparent),linear-gradient(160deg,#1a2a4a,#101a2e)}
+.phone{width:280px;max-width:72vw;border-radius:46px;padding:9px;background:#2b3240;box-shadow:0 0 0 1.5px rgba(255,255,255,.28),0 30px 80px rgba(0,0,0,.55)}
+.phone img,.phone video{display:block;width:100%;height:auto;border-radius:38px;background:#000}
+@media (max-width:820px){.story{grid-template-columns:1fr;gap:28px;margin-top:56px}.story:nth-of-type(even) .story-text{order:0}.story-media{padding:28px 0}}
+@media (prefers-color-scheme:dark){.showcase{background:#131b2b}}
 </style>
 </head>
 <body>
@@ -61,19 +71,50 @@
   </div>
 </section>
 
-<section id="screenshots">
+<section id="screenshots" class="showcase">
   <div class="wrap">
-    <h2>So sieht die App aus</h2>
-    <p class="section-lead">Echte Screenshots aus DuBizUnterwegs auf dem iPhone.</p>
-  </div>
-  <div class="gallery" tabindex="0" aria-label="App-Screenshots">
-    <figure><img src="img/heute.webp" width="600" height="1304" loading="lazy" alt="Tab Heute"><figcaption>Heute: Arbeitszeit, Belege, Laden</figcaption></figure>
-    <figure><img src="img/reisen.webp" width="600" height="1304" loading="lazy" alt="Tab Reisen"><figcaption>Dienstreisen mit Pauschale</figcaption></figure>
-    <figure><img src="img/ausgaben.webp" width="600" height="1304" loading="lazy" alt="Tab Ausgaben"><figcaption>Ausgaben nach Kategorie</figcaption></figure>
-    <figure><img src="img/monatsabschluss.webp" width="600" height="1304" loading="lazy" alt="Monatsabschluss"><figcaption>Monatsabschluss mit Checkliste</figcaption></figure>
-    <figure><img src="img/auswertung.webp" width="600" height="1304" loading="lazy" alt="Tab Auswertung"><figcaption>Auswertung und Prüfung</figcaption></figure>
-    <figure><img src="img/statistik.webp" width="600" height="1304" loading="lazy" alt="Statistik"><figcaption>Statistik</figcaption></figure>
-    <figure><img src="img/jahresexport.webp" width="600" height="1304" loading="lazy" alt="Jahresexport"><figcaption>Jahresexport für die Steuer</figcaption></figure>
+    <h2>So läuft ein Monat mit DuBizUnterwegs</h2>
+    <p class="section-lead">Vier Momente, in denen dir die App Arbeit abnimmt. Alle Bilder sind echte Screenshots.</p>
+
+    <div class="story">
+      <div class="story-text">
+        <div class="step-no">1 · Unterwegs</div>
+        <h3>Arbeitszeit mit einem Tipp</h3>
+        <p>Morgens auf „Arbeit starten“, abends stoppen. Die Zeit läuft als Live Activity auf dem Sperrbildschirm und auf der Apple Watch mit.</p>
+        <ul><li>Wochenstunden im Blick, hier 6,8 von 40 h</li><li>Pausen und Homeoffice werden mitgezählt</li><li>Hinweise nach Arbeitszeitgesetz</li></ul>
+      </div>
+      <div class="story-media"><div class="phone"><img src="img/heute.webp" width="600" height="1304" loading="lazy" alt="Tab Heute: Erfassen, Wochenstunden und Arbeitszeiten im Oktober"></div></div>
+    </div>
+
+    <div class="story">
+      <div class="story-text">
+        <div class="step-no">2 · Dienstreise</div>
+        <h3>Reisen werden erkannt, Pauschalen gerechnet</h3>
+        <p>Aus Arbeitsort und Belegen erkennt die App deine Dienstreisen. Die Verpflegungspauschale steht sofort daneben, inklusive Kürzung für das Hotelfrühstück.</p>
+        <ul><li>Berlin, 1 Tag: 14,00 € Pauschale</li><li>München, 2 Tage: 28,00 € Pauschale</li><li>Belege hängen automatisch an der Reise</li></ul>
+      </div>
+      <div class="story-media"><div class="phone"><img src="img/reisen.webp" width="600" height="1304" loading="lazy" alt="Tab Reisen: Berlin und München mit Pauschalen und automatisch zugeordneten Belegen"></div></div>
+    </div>
+
+    <div class="story">
+      <div class="story-text">
+        <div class="step-no">3 · Belege</div>
+        <h3>Belege teilen statt abtippen</h3>
+        <p>Bahnticket aus der Mail, Ladebeleg als Foto: einfach an DuBizUnterwegs teilen. Betrag, Datum und Kategorie werden erkannt.</p>
+        <ul><li>Fahrt, Übernachtung, Verpflegung, Laden</li><li>26 Belege im Jahr, alle an einem Ort</li><li>Hinweis, wenn ein Beleg zu keiner Reise passt</li></ul>
+      </div>
+      <div class="story-media"><div class="phone"><img src="img/ausgaben.webp" width="600" height="1304" loading="lazy" alt="Tab Ausgaben: Bahnfahrten, Hotel und Ladevorgänge im Oktober"></div></div>
+    </div>
+
+    <div class="story">
+      <div class="story-text">
+        <div class="step-no">4 · Monatsende</div>
+        <h3>Ein Tipp zur fertigen Abrechnung</h3>
+        <p>Der Monatsabschluss prüft, ob alles da ist, und fasst die Erstattung zusammen. Das PDF geht direkt an deinen Arbeitgeber.</p>
+        <ul><li>Checkliste: Arbeitstage, Reisen, Nachweise</li><li>Pauschalen, Tanken &amp; Laden, Abos in einer Summe</li><li>Jahresbericht für die Steuererklärung</li></ul>
+      </div>
+      <div class="story-media"><div class="phone"><img src="img/monatsabschluss.webp" width="600" height="1304" loading="lazy" alt="Monatsabschluss September 2026 mit Checkliste und Erstattung gesamt"></div></div>
+    </div>
   </div>
 </section>
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DuBizUnterwegs – Arbeitszeit, Reisekosten, Tanken & Laden in einer App</title>
+<title>DuBizUnterwegs – Reisekosten abrechnen, ohne zu rechnen</title>
 <meta name="description" content="Die iPhone-App für alle, die beruflich unterwegs sind: Arbeitszeit, Dienstreisen, Belege, Kilometer, Tanken und Ladestrom – nach deutschem Steuerrecht, fertig zum Einreichen. Mit Rechnern für Ladestrom 2026 und Verpflegungspauschalen.">
 <meta property="og:title" content="DuBizUnterwegs – Zeit, Reise, Belege und Tanken in einem Rutsch">
 <meta property="og:description" content="Arbeitszeit und Reisekosten nach deutschem Steuerrecht. Deine Daten bleiben auf deinem iPhone.">
@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://dubizunterwegs.de/img/og.png">
 <meta name="twitter:image" content="https://dubizunterwegs.de/img/og.png">
 <meta name="apple-itunes-app" content="app-id=6760576836">
-<link rel="icon" href="img/icon.png">
+<link rel="icon" type="image/png" href="img/icon.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "DuBizUnterwegs: Reisekosten", "alternateName": "DuBizUnterwegs", "operatingSystem": "iOS, watchOS", "applicationCategory": "BusinessApplication", "inLanguage": "de", "description": "Arbeitszeit, Dienstreisen, Belege, Kilometer, Tank- und Ladevorgänge erfassen und Pauschalen nach deutschem Steuerrecht berechnen. Monats-PDF für den Arbeitgeber.", "url": "https://dubizunterwegs.de/", "downloadUrl": "https://apps.apple.com/de/app/id6760576836", "image": "https://dubizunterwegs.de/img/icon.png", "author": {"@type": "Person", "name": "Nabil el Nouby"}, "offers": [{"@type": "Offer", "price": "0", "priceCurrency": "EUR", "name": "Free"}, {"@type": "Offer", "price": "3.99", "priceCurrency": "EUR", "name": "Pro monatlich"}, {"@type": "Offer", "price": "29.99", "priceCurrency": "EUR", "name": "Pro jährlich"}]}</script>
 <meta property="og:site_name" content="DuBizUnterwegs">
 <meta property="og:locale" content="de_DE">
@@ -22,294 +22,384 @@
 <meta name="theme-color" content="#0b1220">
 <link rel="apple-touch-icon" href="img/icon.png">
 <link rel="stylesheet" href="style.css">
-<style>
-.hero-shot{display:flex;justify-content:center}
-.hero-shot img{width:300px;max-width:78vw;height:auto;border-radius:44px;border:10px solid #0b0d12;box-shadow:0 30px 70px rgba(10,20,40,.28);background:#000}
-.showcase{background:#0b1220;color:#e8edf5;padding:88px 0}
-.showcase h2{color:#fff}
-.showcase .section-lead{color:#a9b4c6}
-.story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:72px}
-.story:nth-of-type(even) .story-text{order:2}
-.story-text h3{font-size:clamp(24px,3vw,32px);margin:.2em 0 .4em;color:#fff;line-height:1.15}
-.story-text p{font-size:18px;color:#c9d2e0;max-width:30em}
-.story-text ul{margin:16px 0 0;padding:0;list-style:none}
-.story-text li{padding:6px 0 6px 28px;position:relative;color:#e8edf5}
-.story-text li::before{content:'';position:absolute;left:0;top:13px;width:14px;height:8px;border-left:2.5px solid #5b9bff;border-bottom:2.5px solid #5b9bff;transform:rotate(-45deg)}
-.step-no{color:#5b9bff;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
-.story-media{display:flex;justify-content:center;padding:40px 0;border-radius:28px;background:radial-gradient(60% 60% at 50% 50%,rgba(91,155,255,.45),rgba(91,155,255,.08) 70%,transparent),linear-gradient(160deg,#1a2a4a,#101a2e)}
-.phone{width:280px;max-width:72vw;border-radius:46px;padding:9px;background:#2b3240;box-shadow:0 0 0 1.5px rgba(255,255,255,.28),0 30px 80px rgba(0,0,0,.55)}
-.phone img,.phone video{display:block;width:100%;height:auto;border-radius:38px;background:#000}
-@media (max-width:820px){.story{grid-template-columns:1fr;gap:28px;margin-top:56px}.story:nth-of-type(even) .story-text{order:0}.story-media{padding:28px 0}}
-@media (prefers-color-scheme:dark){.showcase{background:#131b2b}}
-</style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h7"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M3 3l18 18"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19.5 10 4 4 0 0 1 18 18z"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M3 3l18 18"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24"><path d="M16.5 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8C7 7.4 5.5 8.3 4.7 9.8c-1.6 2.8-.4 7 1.2 9.2.8 1.1 1.7 2.3 2.9 2.3 1.1 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.2-2.6 0 0-2.3-.9-2.3-3.9zM14.3 5.8c.6-.8 1.1-1.8.9-2.8-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.7 1 .1 2-.5 2.6-1.3z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></symbol>
+</svg>
+<a class="skip" href="#main">Zum Inhalt springen</a>
 
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="index.html"><span class="logo">D</span> DuBizUnterwegs</a>
-    <nav class="main">
-      <a href="#screenshots">Screenshots</a>
-      <a href="#funktionen">Funktionen</a>
+    <a class="brand" href="/"><img src="img/icon.png" width="32" height="32" alt=""> DuBizUnterwegs</a>
+    <nav class="main" aria-label="Hauptnavigation">
+      <a href="#ablauf">So geht's</a>
       <a href="#rechner">Rechner</a>
       <a href="#preise">Preise</a>
       <a href="#faq">FAQ</a>
-      <a class="cta" href="https://apps.apple.com/de/app/id6760576836" data-store="Laden">Ab 10.11.</a>
+      <a class="cta" href="https://apps.apple.com/de/app/id6760576836" data-store="Laden" data-prelaunch="ics">Erinnern</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main">
 <section class="hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow">Für Außendienst, Service und alle, die beruflich unterwegs sind</div>
-      <h1>Zeit, Reise, Belege und Tanken – in einem Rutsch.</h1>
-      <p class="lead">DuBizUnterwegs erfasst Arbeitszeit, Dienstreisen, Kilometer, Tank- und Ladevorgänge und rechnet die Pauschalen nach deutschem Steuerrecht. Am Monatsende hast du ein fertiges PDF für deinen Arbeitgeber.</p>
+      <p class="status" data-status><span class="dot" aria-hidden="true"></span><span data-status-text>Erscheint am 10. November 2026</span></p>
+      <h1>Reisekosten abrechnen, ohne zu rechnen.</h1>
+      <p class="lead">Arbeitszeit, Dienstreisen, Belege, Tanken und Laden in einer iPhone-App. DuBizUnterwegs rechnet die Pauschalen nach deutschem Steuerrecht und macht daraus am Monatsende ein fertiges PDF für deinen Arbeitgeber.</p>
       <div class="actions">
-        <a class="btn" href="https://apps.apple.com/de/app/id6760576836" data-store=" Im App Store laden"> Ab 10. November im App Store</a>
-        <a class="btn secondary" href="#rechner">Ladestrom berechnen</a>
+        <a class="btn" href="https://apps.apple.com/de/app/id6760576836" data-store="Im App Store laden" data-prelaunch="ics"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg><span>Zum Launch erinnern</span></a>
+        <a class="btn secondary" href="#rechner"><svg class="icon" aria-hidden="true"><use href="#i-calc"/></svg>Pauschale berechnen</a>
       </div>
-      <p class="note">Kostenlos starten · iPhone · Deine Daten bleiben auf deinem Gerät</p>
+      <ul class="trust">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Regeln 2026</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Kein Konto, keine Datenerfassung</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Gratis starten</li>
+      </ul>
     </div>
-    <div class="hero-shot">
-      <img src="img/heute.webp" width="600" height="1304" alt="DuBizUnterwegs: Tab Heute mit Erfassen, Wochenstunden und Arbeitszeiten" fetchpriority="high">
+    <div class="hero-visual">
+      <div class="phone"><img src="img/monatsabschluss.webp" width="600" height="1304" fetchpriority="high" alt="Monatsabschluss September 2026: Checkliste erfüllt, Erstattung gesamt 1.549,00 Euro, Button PDF an Arbeitgeber senden"></div>
     </div>
   </div>
 </section>
 
-<section id="screenshots" class="showcase">
+<section id="ablauf" class="showcase">
   <div class="wrap">
-    <h2>So läuft ein Monat mit DuBizUnterwegs</h2>
-    <p class="section-lead">Vier Momente, in denen dir die App Arbeit abnimmt. Alle Bilder sind echte Screenshots.</p>
-
-    <div class="story">
-      <div class="story-text">
-        <div class="step-no">1 · Unterwegs</div>
-        <h3>Arbeitszeit mit einem Tipp</h3>
-        <p>Morgens auf „Arbeit starten“, abends stoppen. Die Zeit läuft als Live Activity auf dem Sperrbildschirm und auf der Apple Watch mit.</p>
-        <ul><li>Wochenstunden im Blick, hier 6,8 von 40 h</li><li>Pausen und Homeoffice werden mitgezählt</li><li>Hinweise nach Arbeitszeitgesetz</li></ul>
-      </div>
-      <div class="story-media"><div class="phone"><img src="img/heute.webp" width="600" height="1304" loading="lazy" alt="Tab Heute: Erfassen, Wochenstunden und Arbeitszeiten im Oktober"></div></div>
+    <div class="section-head">
+      <p class="eyebrow">So geht's</p>
+      <h2>Vier Schritte, ein Monat erledigt</h2>
+      <p>Echte Screenshots aus der App. Du erfasst unterwegs, den Rest übernimmt DuBizUnterwegs.</p>
     </div>
-
-    <div class="story">
-      <div class="story-text">
-        <div class="step-no">2 · Dienstreise</div>
-        <h3>Reisen werden erkannt, Pauschalen gerechnet</h3>
-        <p>Aus Arbeitsort und Belegen erkennt die App deine Dienstreisen. Die Verpflegungspauschale steht sofort daneben, inklusive Kürzung für das Hotelfrühstück.</p>
-        <ul><li>Berlin, 1 Tag: 14,00 € Pauschale</li><li>München, 2 Tage: 28,00 € Pauschale</li><li>Belege hängen automatisch an der Reise</li></ul>
-      </div>
-      <div class="story-media"><div class="phone"><img src="img/reisen.webp" width="600" height="1304" loading="lazy" alt="Tab Reisen: Berlin und München mit Pauschalen und automatisch zugeordneten Belegen"></div></div>
-    </div>
-
-    <div class="story">
-      <div class="story-text">
-        <div class="step-no">3 · Belege</div>
-        <h3>Belege teilen statt abtippen</h3>
-        <p>Bahnticket aus der Mail, Ladebeleg als Foto: einfach an DuBizUnterwegs teilen. Betrag, Datum und Kategorie werden erkannt.</p>
-        <ul><li>Fahrt, Übernachtung, Verpflegung, Laden</li><li>26 Belege im Jahr, alle an einem Ort</li><li>Hinweis, wenn ein Beleg zu keiner Reise passt</li></ul>
-      </div>
-      <div class="story-media"><div class="phone"><img src="img/ausgaben.webp" width="600" height="1304" loading="lazy" alt="Tab Ausgaben: Bahnfahrten, Hotel und Ladevorgänge im Oktober"></div></div>
-    </div>
-
-    <div class="story">
-      <div class="story-text">
-        <div class="step-no">4 · Monatsende</div>
-        <h3>Ein Tipp zur fertigen Abrechnung</h3>
-        <p>Der Monatsabschluss prüft, ob alles da ist, und fasst die Erstattung zusammen. Das PDF geht direkt an deinen Arbeitgeber.</p>
-        <ul><li>Checkliste: Arbeitstage, Reisen, Nachweise</li><li>Pauschalen, Tanken &amp; Laden, Abos in einer Summe</li><li>Jahresbericht für die Steuererklärung</li></ul>
-      </div>
-      <div class="story-media"><div class="phone"><img src="img/monatsabschluss.webp" width="600" height="1304" loading="lazy" alt="Monatsabschluss September 2026 mit Checkliste und Erstattung gesamt"></div></div>
+    <div class="stories">
+      <article class="story">
+        <div class="story-text">
+          <p class="step"><b>1</b>Unterwegs</p>
+          <h3>Arbeitszeit mit einem Tipp</h3>
+          <p>Morgens „Arbeit starten“, abends stoppen. Die Zeit läuft als Live Activity auf dem Sperrbildschirm und auf der Apple Watch mit.</p>
+          <ul class="checks">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Wochenstunden immer im Blick</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Pausen und Homeoffice werden mitgezählt</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Hinweise nach Arbeitszeitgesetz</li>
+          </ul>
+        </div>
+        <div class="story-media"><div class="phone"><img src="img/heute.webp" width="600" height="1304" loading="lazy" alt="Tab Heute mit Erfassen, Wochenstunden 6,8 von 40 und Arbeitszeiten im Oktober"></div></div>
+      </article>
+      <article class="story">
+        <div class="story-text">
+          <p class="step"><b>2</b>Dienstreise</p>
+          <h3>Reisen erkannt, Pauschalen gerechnet</h3>
+          <p>Aus Arbeitsort und Belegen erkennt die App deine Dienstreisen. Die Verpflegungspauschale steht sofort daneben, inklusive Kürzung für das Hotelfrühstück.</p>
+          <ul class="checks">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Inland und Ausland nach BMF 2026</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Kilometerpauschale oder Firmenwagen</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Belege hängen automatisch an der Reise</li>
+          </ul>
+        </div>
+        <div class="story-media"><div class="phone"><img src="img/reisen.webp" width="600" height="1304" loading="lazy" alt="Tab Reisen: Berlin mit 14 Euro und München mit 28 Euro Pauschale, Belege automatisch erkannt"></div></div>
+      </article>
+      <article class="story">
+        <div class="story-text">
+          <p class="step"><b>3</b>Belege</p>
+          <h3>Teilen statt abtippen</h3>
+          <p>Bahnticket aus der Mail, Ladebeleg als Foto: an DuBizUnterwegs teilen. Betrag, Datum und Kategorie werden erkannt.</p>
+          <ul class="checks">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Fahrt, Übernachtung, Verpflegung, Laden</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Alle Belege des Jahres an einem Ort</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Hinweis, wenn ein Beleg zu keiner Reise passt</li>
+          </ul>
+        </div>
+        <div class="story-media"><div class="phone"><img src="img/ausgaben.webp" width="600" height="1304" loading="lazy" alt="Tab Ausgaben mit Bahnfahrten, Hotel und Ladevorgängen im Oktober"></div></div>
+      </article>
+      <article class="story">
+        <div class="story-text">
+          <p class="step"><b>4</b>Abrechnen</p>
+          <h3>Monatsabschluss und Jahresbericht</h3>
+          <p>Die App prüft, ob alles da ist, und fasst die Erstattung zusammen. Das PDF geht an deinen Arbeitgeber, der Jahresbericht in die Steuererklärung.</p>
+          <ul class="checks">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Checkliste vor dem Abschluss</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>PDF für den Arbeitgeber, CSV fürs Lohnbüro</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Jahresübersicht mit Reisetagen und Pauschalen</li>
+          </ul>
+        </div>
+        <div class="story-media"><div class="phone"><img src="img/jahresexport.webp" width="600" height="1304" loading="lazy" alt="Jahresexport 2026 mit Arbeitstagen, Dienstreisen, Verpflegungspauschale und Ausgaben"></div></div>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="alt" id="funktionen">
+<section id="funktionen">
   <div class="wrap">
-    <h2>Eine Dienstreise. Alles dran.</h2>
-    <p class="section-lead">Andere Apps machen Zeiterfassung oder Spesen oder Ladestrom. DuBizUnterwegs verbindet alles in der Reise – und prüft, ob es zusammenpasst.</p>
+    <div class="section-head">
+      <p class="eyebrow">Funktionen</p>
+      <h2>Alles, was eine Dienstreise braucht</h2>
+      <p>Andere Apps machen Zeiterfassung oder Spesen oder Ladestrom. DuBizUnterwegs verbindet alles in der Reise und prüft, ob es zusammenpasst.</p>
+    </div>
     <div class="grid">
-      <div class="feature"><div class="ic">⏱</div><h3>Arbeitszeit mit einem Tipp</h3><p>Timer, Widget, Live-Aktivität und Siri. Warnungen nach Arbeitszeitgesetz und Pausenerinnerung.</p></div>
-      <div class="feature"><div class="ic">✈︎</div><h3>Dienstreisen mit Pauschalen</h3><p>Verpflegungspauschalen Inland und Ausland (BMF 2026), gestellte Mahlzeiten, Rundreisen, Übernachtungspauschale.</p></div>
-      <div class="feature"><div class="ic">🧾</div><h3>Belege automatisch erkannt</h3><p>Bahnticket, Hotel, Tank- oder Ladebeleg teilen – Betrag, Datum und Reise werden erkannt und zugeordnet.</p></div>
-      <div class="feature"><div class="ic">⛽</div><h3>Tanken & Laden</h3><p>Firmenwagen: Tank- und Ladekosten zur Erstattung. Heimladen nach den Regeln 2026 – Destatis-Preis oder eigener Tarif.</p></div>
-      <div class="feature"><div class="ic">✓</div><h3>Prüft sich selbst</h3><p>Hinweise statt Fehler: Beleg ohne Reise, Frühstück im Hotel, Reisen, die sich überschneiden – mit Lösung per Tipp.</p></div>
-      <div class="feature"><div class="ic">📄</div><h3>Fertig zum Einreichen</h3><p>Monatsabrechnung als PDF für den Arbeitgeber, CSV fürs Lohnbüro, Jahresbericht für die Steuererklärung.</p></div>
+      <div class="card feature"><div class="ic"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></div><h3>Arbeitszeit</h3><p>Timer, Widget, Live Activity, Siri und Apple Watch. Pausenerinnerung und Hinweise nach Arbeitszeitgesetz.</p></div>
+      <div class="card feature"><div class="ic"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg></div><h3>Dienstreisen</h3><p>Verpflegungspauschalen Inland und Ausland, gestellte Mahlzeiten, Rundreisen und Übernachtungspauschale.</p></div>
+      <div class="card feature"><div class="ic"><svg class="icon" aria-hidden="true"><use href="#i-receipt"/></svg></div><h3>Belege</h3><p>Bahnticket, Hotel, Tank- oder Ladebeleg teilen. Betrag, Datum und Reise werden erkannt und zugeordnet.</p></div>
+      <div class="card feature"><div class="ic"><svg class="icon" aria-hidden="true"><use href="#i-bolt"/></svg></div><h3>Tanken und Laden</h3><p>Firmenwagen: Tank- und Ladekosten zur Erstattung. Heimladen nach den Regeln 2026, Destatis-Preis oder eigener Tarif.</p></div>
+      <div class="card feature"><div class="ic"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></div><h3>Prüft sich selbst</h3><p>Beleg ohne Reise, Frühstück im Hotel, überschneidende Reisen: Hinweise mit Lösung per Tipp.</p></div>
+      <div class="card feature"><div class="ic"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg></div><h3>Fertig zum Einreichen</h3><p>Monatsabrechnung als PDF, CSV fürs Lohnbüro, Jahresbericht für die Steuererklärung.</p></div>
     </div>
   </div>
 </section>
 
-<section>
+<section id="rechner" class="band">
   <div class="wrap">
-    <h2>So funktioniert's</h2>
-    <p class="section-lead">Kein Konto, keine Einrichtung im Unternehmen. Einfach loslegen.</p>
-    <div class="steps">
-      <div class="step"><h3>Unterwegs erfassen</h3><p>Timer starten, Reise anlegen, Belege aus Mail oder Fotos teilen.</p></div>
-      <div class="step"><h3>App rechnet und prüft</h3><p>Pauschalen, Kilometer, Erstattungen – und Hinweise, wenn etwas fehlt.</p></div>
-      <div class="step"><h3>Monat abschließen</h3><p>PDF an den Arbeitgeber, CSV ans Lohnbüro. Fertig.</p></div>
+    <div class="section-head center">
+      <p class="eyebrow">Kostenlose Rechner</p>
+      <h2>Was steht dir zu?</h2>
+      <p>Rechnet direkt in deinem Browser, nichts wird übertragen.</p>
     </div>
-  </div>
-</section>
-
-<section class="alt" id="rechner">
-  <div class="wrap">
-    <h2>Kostenlose Rechner</h2>
-    <p class="section-lead">Die Rechner laufen vollständig in deinem Browser – nichts wird übertragen. Angaben ohne Gewähr, keine Steuerberatung.</p>
-    <div class="calcs">
-
-      <div class="calc" id="ladestrom">
-        <h3>Dienstwagen zuhause laden 2026</h3>
-        <p class="hint">Seit 2026 gibt es keine Monatspauschale mehr: Erstattet werden die tatsächlich geladenen kWh, gemessen mit Wallbox- oder Fahrzeugzähler.</p>
-        <div class="field">
-          <label for="kwh">Geladene Energie im Monat (kWh)</label>
-          <input id="kwh" type="number" inputmode="decimal" min="0" step="0.1" value="250">
-        </div>
-        <div class="field">
-          <label>Strompreis</label>
-          <div class="toggle">
-            <label><input type="radio" name="pmode" value="destatis" checked> Destatis-Durchschnitt (0,34 €/kWh)</label>
-            <label><input type="radio" name="pmode" value="tarif"> Eigener Tarif</label>
-          </div>
-        </div>
-        <div class="field" id="tarifField" hidden>
-          <label for="tarif">Dein Arbeitspreis (€/kWh)</label>
-          <input id="tarif" type="number" inputmode="decimal" min="0" step="0.001" value="0.32">
-        </div>
-        <div class="result">
-          <div class="big" id="ladeOut">85,00 €</div>
-          <div class="breakdown" id="ladeBreak">250 kWh × 0,34 €/kWh</div>
-        </div>
-        <p class="warn" id="ladeWarn">Der Destatis-Preis gilt einheitlich für das ganze Kalenderjahr.</p>
+    <div class="calc-shell">
+      <div class="tabs" role="tablist" aria-label="Rechner auswählen">
+        <button role="tab" id="tab-vp" aria-controls="verpflegung" aria-selected="true">Verpflegung</button>
+        <button role="tab" id="tab-ls" aria-controls="ladestrom" aria-selected="false" tabindex="-1">Ladestrom</button>
       </div>
 
-      <div class="calc" id="verpflegung">
-        <h3>Verpflegungspauschale berechnen</h3>
-        <p class="hint">Inland 14 € / 28 €, Ausland nach Ländersätzen ab 1.1.2026 (BMF-Schreiben vom 5.12.2025).</p>
-        <div class="field">
-          <label for="land">Reiseziel</label>
-          <select id="land"></select>
-        </div>
-        <div class="field">
-          <label for="tage">Reisetage (inkl. An- und Abreisetag)</label>
-          <input id="tage" type="number" min="1" max="60" step="1" value="2">
-        </div>
-        <div class="field" id="achtField">
-          <div class="toggle">
-            <label><input type="checkbox" id="acht" checked> mehr als 8 Stunden unterwegs</label>
+      <div class="card calc" id="verpflegung" role="tabpanel" aria-labelledby="tab-vp">
+        <div>
+          <p class="hint">Inland 14 € und 28 €, Ausland nach den Ländersätzen 2026.</p>
+          <div class="field"><label for="land">Reiseziel</label><select id="land"></select></div>
+          <div class="field"><label for="tage">Reisetage inklusive An- und Abreise</label><input id="tage" type="number" inputmode="numeric" min="1" max="60" step="1" value="2"></div>
+          <div class="field" id="achtField"><label class="check"><input type="checkbox" id="acht" checked> Mehr als 8 Stunden unterwegs</label></div>
+          <div class="field">
+            <span class="label" id="meals-label">Gestellte Mahlzeiten, z. B. Hotelfrühstück</span>
+            <div class="steppers" role="group" aria-labelledby="meals-label">
+              <div class="stepper"><div class="row"><button type="button" data-step="fr" data-d="-1" aria-label="Frühstück weniger">−</button><output id="fr-o">1</output><button type="button" data-step="fr" data-d="1" aria-label="Frühstück mehr">+</button></div><small>Frühstück</small><input type="hidden" id="fr" value="1"></div>
+              <div class="stepper"><div class="row"><button type="button" data-step="mi" data-d="-1" aria-label="Mittagessen weniger">−</button><output id="mi-o">0</output><button type="button" data-step="mi" data-d="1" aria-label="Mittagessen mehr">+</button></div><small>Mittagessen</small><input type="hidden" id="mi" value="0"></div>
+              <div class="stepper"><div class="row"><button type="button" data-step="ab" data-d="-1" aria-label="Abendessen weniger">−</button><output id="ab-o">0</output><button type="button" data-step="ab" data-d="1" aria-label="Abendessen mehr">+</button></div><small>Abendessen</small><input type="hidden" id="ab" value="0"></div>
+            </div>
           </div>
         </div>
-        <div class="field">
-          <label>Gestellte Mahlzeiten (z. B. Hotelfrühstück)</label>
-          <div class="inline">
-            <input id="fr" type="number" min="0" step="1" value="1" aria-label="Frühstück" title="Frühstück">
-            <input id="mi" type="number" min="0" step="1" value="0" aria-label="Mittagessen" title="Mittagessen">
-            <input id="ab" type="number" min="0" step="1" value="0" aria-label="Abendessen" title="Abendessen">
-          </div>
-          <div class="inline" style="font-size:13px;color:var(--muted)"><span>Frühstück</span><span>Mittagessen</span><span>Abendessen</span></div>
-        </div>
-        <div class="result">
+        <div class="result" aria-live="polite">
+          <div class="label">Pauschale</div>
           <div class="big" id="vpOut">22,40 €</div>
           <div class="breakdown" id="vpBreak"></div>
+          <p class="warn" id="a1" hidden>EU-/EWR-Ausland oder Schweiz: A1-Bescheinigung vor Reiseantritt beantragen.</p>
         </div>
-        <p class="warn" id="a1" hidden>Reise ins EU-/EWR-Ausland oder die Schweiz: A1-Bescheinigung vor Reiseantritt beantragen.</p>
       </div>
 
+      <div class="card calc" id="ladestrom" role="tabpanel" aria-labelledby="tab-ls" hidden>
+        <div>
+          <p class="hint">Seit 2026 keine Monatspauschale mehr: Erstattet werden die geladenen kWh, gemessen über Wallbox oder Fahrzeug.</p>
+          <div class="field"><label for="kwh">Geladen im Monat (kWh)</label><input id="kwh" type="number" inputmode="decimal" min="0" step="0.1" value="250"></div>
+          <div class="field">
+            <span class="label">Strompreis</span>
+            <div class="seg">
+              <label><input type="radio" name="pmode" value="destatis" checked> Destatis 0,34 €</label>
+              <label><input type="radio" name="pmode" value="tarif"> Eigener Tarif</label>
+            </div>
+          </div>
+          <div class="field" id="tarifField" hidden><label for="tarif">Dein Arbeitspreis (€/kWh)</label><input id="tarif" type="number" inputmode="decimal" min="0" step="0.001" value="0.32"></div>
+        </div>
+        <div class="result" aria-live="polite">
+          <div class="label">Erstattung</div>
+          <div class="big" id="ladeOut">85,00 €</div>
+          <div class="breakdown" id="ladeBreak">250 kWh × 0,34 €/kWh</div>
+          <p class="warn" id="ladeWarn">Der Destatis-Preis gilt einheitlich für das ganze Kalenderjahr.</p>
+        </div>
+      </div>
+      <p class="calc-note">Angaben ohne Gewähr, keine Steuerberatung. Mehr in den <a href="#ratgeber">Ratgebern</a>.</p>
     </div>
   </div>
 </section>
 
 <section id="preise">
   <div class="wrap">
-    <h2>Preise</h2>
-    <p class="section-lead">Kostenlos starten. Pro, wenn du mehr reist.</p>
+    <div class="section-head center">
+      <p class="eyebrow">Preise</p>
+      <h2>Gratis starten. Pro, wenn du mehr reist.</h2>
+    </div>
     <div class="pricing">
-      <div class="plan">
+      <div class="card plan">
         <h3>Free</h3>
         <div class="price">0 €</div>
-        <div class="per">für immer</div>
-        <ul>
-          <li>Arbeitszeit mit Timer, Widget und Siri</li>
-          <li>3 Dienstreisen pro Monat</li>
-          <li>Belege erfassen und prüfen</li>
+        <div class="per">dauerhaft</div>
+        <ul class="checks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Arbeitszeit mit Timer, Widget und Siri</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>3 Dienstreisen pro Monat mit Pauschalen</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Belege erfassen und prüfen</li>
         </ul>
       </div>
-      <div class="plan pro">
+      <div class="card plan pro">
+        <span class="badge">Für Vielreisende</span>
         <h3>Pro</h3>
         <div class="price">3,99 €</div>
-        <div class="per">pro Monat · oder 29,99 € pro Jahr</div>
-        <ul>
-          <li>Unbegrenzt Dienstreisen</li>
-          <li>Tank-, Lade- und Belegerkennung</li>
-          <li>Monatsabrechnung als PDF und CSV</li>
-          <li>Jahresbericht für die Steuer</li>
+        <div class="per">pro Monat oder 29,99 € pro Jahr</div>
+        <ul class="checks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Unbegrenzt Dienstreisen</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Belege, Tank- und Ladebelege automatisch erkennen</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Tanken und Laden mit Erstattung</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Monatsabschluss als PDF für den Arbeitgeber</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Jahresbericht für die Steuer als PDF und CSV</li>
         </ul>
       </div>
     </div>
-    <p class="note" style="color:var(--muted);font-size:14px;margin-top:14px">Abrechnung über den App Store. Jederzeit in den iOS-Einstellungen kündbar.</p>
+    <p class="price-note">Abrechnung über den App Store, jederzeit in den iOS-Einstellungen kündbar.</p>
   </div>
 </section>
 
-<section class="alt" id="datenschutz-kurz">
+<section id="datenschutz-kurz" class="band">
   <div class="wrap">
-    <h2>Deine Daten bleiben bei dir</h2>
-    <p class="section-lead">Kein Konto, kein Server, kein Tracking. Alles liegt auf deinem iPhone und optional in deinem privaten iCloud-Speicher. Belege werden direkt auf dem Gerät gelesen. Dein Arbeitgeber sieht nur, was du selbst einreichst.</p>
-    <a href="datenschutz.html">Zur Datenschutzerklärung</a>
+    <div class="section-head">
+      <p class="eyebrow">Datenschutz</p>
+      <h2>Deine Daten bleiben bei dir</h2>
+    </div>
+    <div class="privacy">
+      <div class="item"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><div><h3>Kein Konto</h3><p>Kein Login, keine E-Mail-Adresse. Du öffnest die App und legst los.</p></div></div>
+      <div class="item"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg><div><h3>Keine Datenerfassung</h3><p>Kein Server, kein Tracking. Belege werden direkt auf dem iPhone gelesen.</p></div></div>
+      <div class="item"><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg><div><h3>Sync über dein iCloud</h3><p>Optional im privaten iCloud-Speicher. Dein Arbeitgeber sieht nur, was du einreichst.</p></div></div>
+    </div>
+    <p style="margin-top:32px"><a href="datenschutz.html">Datenschutzerklärung lesen</a></p>
   </div>
 </section>
 
-<section id="faq">
+<section id="ratgeber">
   <div class="wrap">
-    <h2>Häufige Fragen</h2>
-    <details><summary>Für wen ist die App gedacht?</summary><p>Für Angestellte, die regelmäßig beim Kunden sind: Außendienst, Vertrieb, technischer Service, Montage, Beratung, Gutachter. Auch Selbstständige nutzen sie für Reisekosten und Kilometer.</p></details>
-    <details><summary>Muss mein Arbeitgeber etwas einrichten?</summary><p>Nein. Du nutzt die App für dich und reichst am Monatsende ein PDF oder eine CSV ein – so, wie dein Arbeitgeber es braucht.</p></details>
-    <details><summary>Ich habe einen Firmenwagen – was ändert sich?</summary><p>Für Fahrten mit dem Firmenwagen gibt es keine Kilometerpauschale. Dafür erstattet der Arbeitgeber Tank- und Ladekosten, die du privat bezahlt hast. Die App rechnet das automatisch, sobald du dein Fahrzeug als Firmenwagen anlegst.</p></details>
-    <details><summary>Wie funktioniert die Ladestrom-Abrechnung seit 2026?</summary><p>Monatliche Pauschalen für das Laden zuhause sind seit 1.1.2026 weggefallen. Erstattet werden die geladenen kWh, nachgewiesen über einen gesonderten Zähler – die Wallbox oder den Zähler im Fahrzeug. Als Preis gilt dein Tarif oder der Durchschnittspreis des Statistischen Bundesamts.</p></details>
-    <details><summary>Ersetzt die App meinen Steuerberater?</summary><p>Nein. Die App rechnet nach den aktuellen Regeln und Pauschbeträgen, ersetzt aber keine Steuerberatung. Prüfe die Ergebnisse und beachte die Reisekostenrichtlinie deines Unternehmens.</p></details>
-    <details><summary>Gibt es eine Android-Version?</summary><p>Noch nicht. Wenn du Interesse hast, schreib uns – das hilft bei der Planung.</p></details>
+    <div class="section-head">
+      <p class="eyebrow">Ratgeber 2026</p>
+      <h2>Die Regeln, kurz erklärt</h2>
+    </div>
+    <div class="guides">
+      <a class="card guide" href="verpflegungspauschale-2026.html"><span class="tag">Verpflegung</span><h3>Verpflegungspauschale 2026</h3><p>14 € und 28 €, Kürzung für Frühstück und Essen, mit Beispielrechnung.</p><span class="more">Weiterlesen →</span></a>
+      <a class="card guide" href="dienstwagen-laden-2026.html"><span class="tag">E-Auto</span><h3>Dienstwagen zu Hause laden</h3><p>Seit 2026 nach kWh statt Pauschale. So wird Ladestrom erstattet.</p><span class="more">Weiterlesen →</span></a>
+      <a class="card guide" href="kilometerpauschale-2026.html"><span class="tag">Fahrtkosten</span><h3>Kilometerpauschale 2026</h3><p>30 Cent für Dienstreisen, 38 Cent für den Arbeitsweg: der Unterschied.</p><span class="more">Weiterlesen →</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="band">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">FAQ</p>
+      <h2>Häufige Fragen</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Für wen ist die App gedacht?</summary><p>Für Angestellte, die regelmäßig unterwegs sind: Außendienst, Vertrieb, technischer Service, Montage, Beratung, Gutachter. Auch Selbstständige nutzen sie für Reisekosten und Kilometer.</p></details>
+      <details><summary>Muss mein Arbeitgeber etwas einrichten?</summary><p>Nein. Du nutzt die App für dich und reichst am Monatsende ein PDF oder eine CSV ein, so wie dein Arbeitgeber es braucht.</p></details>
+      <details><summary>Ich habe einen Firmenwagen. Was ändert sich?</summary><p>Für Fahrten mit dem Firmenwagen gibt es keine Kilometerpauschale. Dafür erstattet der Arbeitgeber Tank- und Ladekosten, die du privat bezahlt hast. Die App rechnet das, sobald du dein Fahrzeug als Firmenwagen anlegst.</p></details>
+      <details><summary>Wie funktioniert die Ladestrom-Abrechnung seit 2026?</summary><p>Die Monatspauschalen für das Laden zu Hause sind seit 1.1.2026 weggefallen. Erstattet werden die geladenen kWh, nachgewiesen über die Wallbox oder den Zähler im Fahrzeug. Als Preis gilt dein Tarif oder der Durchschnittspreis des Statistischen Bundesamts.</p></details>
+      <details><summary>Ersetzt die App meinen Steuerberater?</summary><p>Nein. Die App rechnet nach den aktuellen Regeln, ersetzt aber keine Steuerberatung. Prüfe die Ergebnisse und beachte die Reisekostenrichtlinie deines Unternehmens.</p></details>
+      <details><summary>Wann erscheint die App, und gibt es Android?</summary><p>DuBizUnterwegs erscheint am 10. November 2026 für iPhone und Apple Watch. Eine Android-Version gibt es noch nicht. Wenn du Interesse hast, <a href="mailto:noubyte@absan.de">schreib uns</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Deine nächste Abrechnung macht sich fast von selbst.</h2>
+    <p data-final-text>Ab 10. November gratis im App Store. Wir erinnern dich gern.</p>
+    <div class="actions">
+      <a class="btn" href="https://apps.apple.com/de/app/id6760576836" data-store="Im App Store laden" data-prelaunch="ics"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg><span>Zum Launch erinnern</span></a>
+      <a class="btn secondary" href="#rechner">Erst mal rechnen</a>
+    </div>
   </div>
 </section>
 </main>
 
-<section class="alt" id="ratgeber">
-  <div class="wrap">
-    <h2>Ratgeber 2026</h2>
-    <p><a href="verpflegungspauschale-2026.html">Verpflegungspauschale 2026</a> · <a href="dienstwagen-laden-2026.html">Dienstwagen zu Hause laden 2026</a> · <a href="kilometerpauschale-2026.html">Kilometerpauschale 2026</a></p>
-  </div>
-</section>
-
 <footer class="site">
-  <div class="wrap">
-    <nav>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="presse.html">Presse</a>
-      <a href="mailto:noubyte@absan.de">Kontakt</a>
-    </nav>
-    <span class="copy">© 2026 Nabil el Nouby</span>
+  <div class="wrap footer-cols">
+    <div class="about">
+      <a class="brand" href="/"><img src="img/icon.png" width="32" height="32" alt=""> DuBizUnterwegs</a>
+      <p>Arbeitszeit und Reisekosten nach deutschem Steuerrecht. Entwickelt in Hamburg.</p>
+    </div>
+    <div><h4>Produkt</h4><ul><li><a href="#funktionen">Funktionen</a></li><li><a href="#preise">Preise</a></li><li><a href="#faq">FAQ</a></li><li><a href="presse.html">Presse</a></li></ul></div>
+    <div><h4>Ratgeber</h4><ul><li><a href="verpflegungspauschale-2026.html">Verpflegungspauschale</a></li><li><a href="dienstwagen-laden-2026.html">Dienstwagen laden</a></li><li><a href="kilometerpauschale-2026.html">Kilometerpauschale</a></li></ul></div>
+    <div><h4>Rechtliches</h4><ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="nutzungsbedingungen.html">Nutzungsbedingungen</a></li><li><a href="mailto:noubyte@absan.de">Kontakt</a></li></ul></div>
   </div>
+  <div class="wrap" style="margin-top:32px"><span class="copy">© 2026 Nabil el Nouby</span></div>
 </footer>
 
 <script>
-(function () {
-  var RATES = [["Deutschland (Inland)",28,14],["Ägypten",50,33],["Äthiopien",44,29],["Äquatorialguinea",42,28],["Albanien",33,22],["Algerien",47,32],["Andorra",45,30],["Angola",40,27],["Argentinien",42,28],["Armenien",29,20],["Aserbaidschan",44,29],["Australien – Canberra",74,49],["Australien – Sydney",57,38],["Australien – im Übrigen",57,38],["Bahrain",48,32],["Bangladesch",46,31],["Barbados",54,36],["Belgien",59,40],["Benin",40,27],["Bhutan",27,18],["Bolivien",46,31],["Bosnien und Herzegowina",32,21],["Botsuana",40,27],["Brasilien – Brasilia",51,34],["Brasilien – Rio de Janeiro",69,46],["Brasilien – Sao Paulo",46,31],["Brasilien – im Übrigen",46,31],["Brunei",45,30],["Bulgarien",38,25],["Burkina Faso",39,26],["Burundi",58,39],["Chile",44,29],["China – Hongkong",83,56],["China – Peking",57,38],["China – Shanghai",48,32],["China – im Übrigen",48,32],["Costa Rica",60,40],["Côte d'Ivoire",60,40],["Dänemark",75,50],["Dominikanische Republik",50,33],["Dschibuti",77,52],["Ecuador",27,18],["El Salvador",65,44],["Eritrea",46,31],["Estland",39,26],["Fidschi",32,21],["Finnland",54,36],["Frankreich – Paris (inkl. Dep. 77, 78, 91–95)",58,39],["Frankreich – im Übrigen",53,36],["Gabun",64,43],["Gambia",40,27],["Georgien",45,30],["Ghana",46,31],["Griechenland – Athen",40,27],["Griechenland – im Übrigen",36,24],["Guatemala",46,31],["Guinea",59,40],["Guinea-Bissau",32,21],["Honduras",57,38],["Indien – Bangalore",42,28],["Indien – Chennai",22,15],["Indien – Kalkutta",32,21],["Indien – Mumbai",53,36],["Indien – Neu Delhi",46,31],["Indien – im Übrigen",22,15],["Indonesien",45,30],["Iran",33,22],["Irland",64,43],["Island",62,41],["Israel",59,40],["Italien – Mailand",42,28],["Italien – Rom",48,32],["Italien – im Übrigen",42,28],["Jamaika",39,26],["Japan – Tokio",50,33],["Japan – Osaka",33,22],["Japan – im Übrigen",33,22],["Jordanien",57,38],["Kambodscha",42,28],["Kamerun",56,37],["Kanada – Ottawa",62,41],["Kanada – Toronto",54,36],["Kanada – Vancouver",63,42],["Kanada – im Übrigen",54,36],["Kap Verde",38,25],["Kasachstan",33,22],["Katar",81,54],["Kenia",48,32],["Kirgisistan",35,24],["Kolumbien",34,23],["Kongo, Republik",53,36],["Kongo, Demokratische Republik",65,44],["Korea, Republik",39,26],["Kosovo",24,16],["Kroatien",46,31],["Kuba",51,34],["Kuwait",63,42],["Laos",35,24],["Lesotho",28,19],["Lettland",46,31],["Libanon",69,46],["Liberia",65,44],["Liechtenstein",57,38],["Litauen",48,32],["Luxemburg",63,42],["Madagaskar",33,22],["Malawi",41,28],["Malaysia",36,24],["Malediven",70,47],["Mali",42,28],["Malta",59,40],["Marokko",41,28],["Marshallinseln",45,30],["Mauretanien",35,24],["Mauritius",44,29],["Mexiko",40,27],["Moldau",26,17],["Monaco",52,35],["Mongolei",23,16],["Montenegro",32,21],["Mosambik",51,34],["Myanmar",23,16],["Namibia",28,19],["Nepal",33,22],["Neuseeland",58,39],["Nicaragua",46,31],["Niederlande",58,39],["Niger",42,28],["Nigeria",52,35],["Nordmazedonien",27,18],["Norwegen",75,50],["Österreich",50,33],["Oman",64,43],["Pakistan",41,28],["Palau",51,34],["Panama",41,28],["Papua-Neuguinea",59,40],["Paraguay",39,26],["Peru",52,35],["Philippinen",41,28],["Polen – Breslau",34,23],["Polen – Warschau",40,27],["Polen – im Übrigen",34,23],["Portugal",32,21],["Ruanda",44,29],["Rumänien",38,25],["Russland – Moskau",30,20],["Russland – St. Petersburg",28,19],["Russland – im Übrigen",28,19],["Sambia",38,25],["Samoa",39,26],["San Marino",34,23],["São Tomé und Príncipe",36,24],["Saudi-Arabien – Djidda",57,38],["Saudi-Arabien – Riad",56,37],["Saudi-Arabien – im Übrigen",56,37],["Schweden",66,44],["Schweiz – Bern",82,55],["Schweiz – Genf",70,47],["Schweiz – im Übrigen",70,47],["Senegal",48,32],["Serbien",27,18],["Sierra Leone",57,38],["Simbabwe",63,42],["Singapur",71,48],["Slowakei",33,22],["Slowenien",38,25],["Spanien – Barcelona",34,23],["Spanien – Kanarische Inseln",36,24],["Spanien – Madrid",42,28],["Spanien – Palma de Mallorca",44,29],["Spanien – im Übrigen",34,23],["Sri Lanka",36,24],["Südafrika – Kapstadt",33,22],["Südafrika – Johannesburg",36,24],["Südafrika – im Übrigen",29,20],["Südsudan",51,34],["Tadschikistan",27,18],["Taiwan",51,34],["Tansania",44,29],["Thailand",36,24],["Togo",36,24],["Tonga",29,20],["Trinidad und Tobago",66,44],["Tschad",42,28],["Tschechien",32,21],["Türkei – Ankara",32,21],["Türkei – Izmir",44,29],["Türkei – im Übrigen",24,16],["Tunesien",40,27],["Turkmenistan",28,19],["Uganda",45,30],["Ukraine",33,22],["Ungarn",32,21],["Uruguay",40,27],["Usbekistan",32,21],["Vatikanstaat",48,32],["Venezuela",51,34],["Vereinigte Arabische Emirate",81,54],["USA – Atlanta",77,52],["USA – Boston",63,42],["USA – Chicago",65,44],["USA – Houston",62,41],["USA – Los Angeles",64,43],["USA – Miami",65,44],["USA – New York City",66,44],["USA – San Francisco",59,40],["USA – Washington, D.C.",66,44],["USA – im Übrigen",59,40],["Vereinigtes Königreich – London",66,44],["Vereinigtes Königreich – im Übrigen",52,35],["Vietnam",36,24],["Belarus",21,14],["Zentralafrikanische Republik",53,36],["Zypern",42,28]];
+var RATES = [["Deutschland (Inland)",28,14],["Ägypten",50,33],["Äthiopien",44,29],["Äquatorialguinea",42,28],["Albanien",33,22],["Algerien",47,32],["Andorra",45,30],["Angola",40,27],["Argentinien",42,28],["Armenien",29,20],["Aserbaidschan",44,29],["Australien – Canberra",74,49],["Australien – Sydney",57,38],["Australien – im Übrigen",57,38],["Bahrain",48,32],["Bangladesch",46,31],["Barbados",54,36],["Belgien",59,40],["Benin",40,27],["Bhutan",27,18],["Bolivien",46,31],["Bosnien und Herzegowina",32,21],["Botsuana",40,27],["Brasilien – Brasilia",51,34],["Brasilien – Rio de Janeiro",69,46],["Brasilien – Sao Paulo",46,31],["Brasilien – im Übrigen",46,31],["Brunei",45,30],["Bulgarien",38,25],["Burkina Faso",39,26],["Burundi",58,39],["Chile",44,29],["China – Hongkong",83,56],["China – Peking",57,38],["China – Shanghai",48,32],["China – im Übrigen",48,32],["Costa Rica",60,40],["Côte d'Ivoire",60,40],["Dänemark",75,50],["Dominikanische Republik",50,33],["Dschibuti",77,52],["Ecuador",27,18],["El Salvador",65,44],["Eritrea",46,31],["Estland",39,26],["Fidschi",32,21],["Finnland",54,36],["Frankreich – Paris (inkl. Dep. 77, 78, 91–95)",58,39],["Frankreich – im Übrigen",53,36],["Gabun",64,43],["Gambia",40,27],["Georgien",45,30],["Ghana",46,31],["Griechenland – Athen",40,27],["Griechenland – im Übrigen",36,24],["Guatemala",46,31],["Guinea",59,40],["Guinea-Bissau",32,21],["Honduras",57,38],["Indien – Bangalore",42,28],["Indien – Chennai",22,15],["Indien – Kalkutta",32,21],["Indien – Mumbai",53,36],["Indien – Neu Delhi",46,31],["Indien – im Übrigen",22,15],["Indonesien",45,30],["Iran",33,22],["Irland",64,43],["Island",62,41],["Israel",59,40],["Italien – Mailand",42,28],["Italien – Rom",48,32],["Italien – im Übrigen",42,28],["Jamaika",39,26],["Japan – Tokio",50,33],["Japan – Osaka",33,22],["Japan – im Übrigen",33,22],["Jordanien",57,38],["Kambodscha",42,28],["Kamerun",56,37],["Kanada – Ottawa",62,41],["Kanada – Toronto",54,36],["Kanada – Vancouver",63,42],["Kanada – im Übrigen",54,36],["Kap Verde",38,25],["Kasachstan",33,22],["Katar",81,54],["Kenia",48,32],["Kirgisistan",35,24],["Kolumbien",34,23],["Kongo, Republik",53,36],["Kongo, Demokratische Republik",65,44],["Korea, Republik",39,26],["Kosovo",24,16],["Kroatien",46,31],["Kuba",51,34],["Kuwait",63,42],["Laos",35,24],["Lesotho",28,19],["Lettland",46,31],["Libanon",69,46],["Liberia",65,44],["Liechtenstein",57,38],["Litauen",48,32],["Luxemburg",63,42],["Madagaskar",33,22],["Malawi",41,28],["Malaysia",36,24],["Malediven",70,47],["Mali",42,28],["Malta",59,40],["Marokko",41,28],["Marshallinseln",45,30],["Mauretanien",35,24],["Mauritius",44,29],["Mexiko",40,27],["Moldau",26,17],["Monaco",52,35],["Mongolei",23,16],["Montenegro",32,21],["Mosambik",51,34],["Myanmar",23,16],["Namibia",28,19],["Nepal",33,22],["Neuseeland",58,39],["Nicaragua",46,31],["Niederlande",58,39],["Niger",42,28],["Nigeria",52,35],["Nordmazedonien",27,18],["Norwegen",75,50],["Österreich",50,33],["Oman",64,43],["Pakistan",41,28],["Palau",51,34],["Panama",41,28],["Papua-Neuguinea",59,40],["Paraguay",39,26],["Peru",52,35],["Philippinen",41,28],["Polen – Breslau",34,23],["Polen – Warschau",40,27],["Polen – im Übrigen",34,23],["Portugal",32,21],["Ruanda",44,29],["Rumänien",38,25],["Russland – Moskau",30,20],["Russland – St. Petersburg",28,19],["Russland – im Übrigen",28,19],["Sambia",38,25],["Samoa",39,26],["San Marino",34,23],["São Tomé und Príncipe",36,24],["Saudi-Arabien – Djidda",57,38],["Saudi-Arabien – Riad",56,37],["Saudi-Arabien – im Übrigen",56,37],["Schweden",66,44],["Schweiz – Bern",82,55],["Schweiz – Genf",70,47],["Schweiz – im Übrigen",70,47],["Senegal",48,32],["Serbien",27,18],["Sierra Leone",57,38],["Simbabwe",63,42],["Singapur",71,48],["Slowakei",33,22],["Slowenien",38,25],["Spanien – Barcelona",34,23],["Spanien – Kanarische Inseln",36,24],["Spanien – Madrid",42,28],["Spanien – Palma de Mallorca",44,29],["Spanien – im Übrigen",34,23],["Sri Lanka",36,24],["Südafrika – Kapstadt",33,22],["Südafrika – Johannesburg",36,24],["Südafrika – im Übrigen",29,20],["Südsudan",51,34],["Tadschikistan",27,18],["Taiwan",51,34],["Tansania",44,29],["Thailand",36,24],["Togo",36,24],["Tonga",29,20],["Trinidad und Tobago",66,44],["Tschad",42,28],["Tschechien",32,21],["Türkei – Ankara",32,21],["Türkei – Izmir",44,29],["Türkei – im Übrigen",24,16],["Tunesien",40,27],["Turkmenistan",28,19],["Uganda",45,30],["Ukraine",33,22],["Ungarn",32,21],["Uruguay",40,27],["Usbekistan",32,21],["Vatikanstaat",48,32],["Venezuela",51,34],["Vereinigte Arabische Emirate",81,54],["USA – Atlanta",77,52],["USA – Boston",63,42],["USA – Chicago",65,44],["USA – Houston",62,41],["USA – Los Angeles",64,43],["USA – Miami",65,44],["USA – New York City",66,44],["USA – San Francisco",59,40],["USA – Washington, D.C.",66,44],["USA – im Übrigen",59,40],["Vereinigtes Königreich – London",66,44],["Vereinigtes Königreich – im Übrigen",52,35],["Vietnam",36,24],["Belarus",21,14],["Zentralafrikanische Republik",53,36],["Zypern",42,28]];
   var A1 = ["Belgien","Bulgarien","Dänemark","Estland","Finnland","Frankreich","Griechenland","Irland","Island","Italien","Kroatien","Lettland","Liechtenstein","Litauen","Luxemburg","Malta","Niederlande","Norwegen","Polen","Portugal","Rumänien","Schweden","Schweiz","Slowakei","Slowenien","Spanien","Tschechien","Ungarn","Zypern","Österreich"];
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var LAUNCH = Date.parse('2026-11-10T07:00:00Z');
+  var live = Date.now() >= LAUNCH;
+
+  // App-Store-Links: vor dem Launch Erinnerung (.ics) statt toter Link
+  document.querySelectorAll('a[data-store]').forEach(function (a) {
+    var label = a.querySelector('span') || a;
+    if (live) {
+      label.textContent = a.getAttribute('data-store');
+      var use = a.querySelector('use'); if (use) use.setAttribute('href', '#i-apple');
+    } else if (a.hasAttribute('data-prelaunch')) {
+      a.href = 'launch.ics'; a.setAttribute('download', 'DuBizUnterwegs-Launch.ics');
+      a.title = 'Kalendereintrag für den 10. November 2026';
+    } else {
+      a.removeAttribute('href'); a.classList.add('soon'); a.setAttribute('aria-disabled', 'true');
+    }
+  });
+  if (live) {
+    document.querySelectorAll('[data-status]').forEach(function (e) { e.querySelector('[data-status-text]').textContent = 'Jetzt im App Store'; });
+    document.querySelectorAll('[data-final-text]').forEach(function (e) { e.textContent = 'Gratis im App Store, für iPhone und Apple Watch.'; });
+  }
+
+  // Aktiver Navigationspunkt
+  var links = [].slice.call(document.querySelectorAll('nav.main a[href^="#"]'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (l) { l.setAttribute('aria-current', l.getAttribute('href') === '#' + e.target.id ? 'true' : 'false'); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    links.forEach(function (l) { var s = document.querySelector(l.getAttribute('href')); if (s) io.observe(s); });
+  }
+
+  // Tabs (Pfeiltasten wie bei nativen Segmenten)
+  var tabs = [].slice.call(document.querySelectorAll('[role=tab]'));
+  function select(t) {
+    tabs.forEach(function (x) {
+      var on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+      $(x.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { select(t); });
+    t.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      var n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length]; select(n); n.focus();
+    });
+  });
+
   var eur = function (v) { return v.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }); };
   var num = function (el) { var v = parseFloat(String(el.value).replace(',', '.')); return isFinite(v) && v > 0 ? v : 0; };
-  var $ = function (id) { return document.getElementById(id); };
+
+  // Stepper für Mahlzeiten
+  document.querySelectorAll('[data-step]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var id = b.getAttribute('data-step'), inp = $(id);
+      var v = Math.max(0, Math.min(60, (parseInt(inp.value, 10) || 0) + parseInt(b.getAttribute('data-d'), 10)));
+      inp.value = v; $(id + '-o').textContent = v; vp();
+    });
+  });
 
   // Ladestrom
   function lade() {
     var mode = document.querySelector('input[name=pmode]:checked').value;
     $('tarifField').hidden = mode !== 'tarif';
-    var price = mode === 'tarif' ? num($('tarif')) : 0.34;
-    var kwh = num($('kwh'));
+    var price = mode === 'tarif' ? num($('tarif')) : 0.34, kwh = num($('kwh'));
     $('ladeOut').textContent = eur(kwh * price);
     $('ladeBreak').textContent = kwh.toLocaleString('de-DE') + ' kWh × ' + price.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 3 }) + ' €/kWh';
-    $('ladeWarn').textContent = mode === 'tarif'
-      ? 'Bei eigenem Tarif: Stromrechnung bzw. Vertrag als Nachweis bereithalten.'
-      : 'Der Destatis-Preis gilt einheitlich für das ganze Kalenderjahr.';
+    $('ladeWarn').textContent = mode === 'tarif' ? 'Bei eigenem Tarif: Stromrechnung oder Vertrag als Nachweis bereithalten.' : 'Der Destatis-Preis gilt einheitlich für das ganze Kalenderjahr.';
   }
   ['kwh', 'tarif'].forEach(function (id) { $(id).addEventListener('input', lade); });
   document.querySelectorAll('input[name=pmode]').forEach(function (r) { r.addEventListener('change', lade); });
@@ -317,36 +407,22 @@
 
   // Verpflegung
   var sel = $('land');
-  RATES.forEach(function (r, i) {
-    var o = document.createElement('option');
-    o.value = i; o.textContent = r[0] + (i === 0 ? '' : ' – ' + r[1] + ' € / ' + r[2] + ' €');
-    sel.appendChild(o);
-  });
+  RATES.forEach(function (r, i) { var o = document.createElement('option'); o.value = i; o.textContent = r[0] + (i === 0 ? '' : ' – ' + r[1] + ' € / ' + r[2] + ' €'); sel.appendChild(o); });
   function vp() {
     var r = RATES[sel.value], full = r[1], part = r[2];
-    var days = Math.max(1, Math.round(num($('tage')) || 1));
+    var days = Math.max(1, Math.round(num($('tage')) || 1)), base, txt;
     $('achtField').hidden = days !== 1;
-    var base, txt;
-    if (days === 1) {
-      base = $('acht').checked ? part : 0;
-      txt = $('acht').checked ? '1 Tag über 8 h: ' + eur(part) : 'Bis 8 h Abwesenheit gibt es keine Pauschale';
-    } else {
-      base = 2 * part + (days - 2) * full;
-      txt = '2 × ' + eur(part) + ' (An-/Abreise)' + (days > 2 ? ' + ' + (days - 2) + ' × ' + eur(full) : '');
-    }
+    if (days === 1) { base = $('acht').checked ? part : 0; txt = $('acht').checked ? '1 Tag über 8 Stunden: ' + eur(part) : 'Bis 8 Stunden gibt es keine Pauschale'; }
+    else { base = 2 * part + (days - 2) * full; txt = '2 × ' + eur(part) + ' An- und Abreise' + (days > 2 ? ' + ' + (days - 2) + ' × ' + eur(full) : ''); }
     var cut = num($('fr')) * full * 0.2 + (num($('mi')) + num($('ab'))) * full * 0.4;
-    if (cut > 0) txt += ' − ' + eur(cut) + ' gestellte Mahlzeiten';
+    if (cut > 0) txt += ' − ' + eur(cut) + ' für gestellte Mahlzeiten';
     $('vpOut').textContent = eur(Math.max(0, Math.round((base - cut) * 100) / 100));
     $('vpBreak').textContent = txt;
-    var country = r[0].split(' – ')[0];
-    $('a1').hidden = A1.indexOf(country) < 0;
+    $('a1').hidden = A1.indexOf(r[0].split(' – ')[0]) < 0;
   }
-  ['tage', 'fr', 'mi', 'ab'].forEach(function (id) { $(id).addEventListener('input', vp); });
-  sel.addEventListener('change', vp);
-  $('acht').addEventListener('change', vp);
+  $('tage').addEventListener('input', vp); sel.addEventListener('change', vp); $('acht').addEventListener('change', vp);
   vp();
 })();
 </script>
-<script>(function(){var live=Date.now()>=Date.parse('2026-11-10T07:00:00Z');document.querySelectorAll('a[data-store]').forEach(function(a){if(live){a.textContent=a.getAttribute('data-store');}else{a.removeAttribute('href');a.classList.add('soon');a.setAttribute('aria-disabled','true');}});})();</script>
 </body>
 </html>

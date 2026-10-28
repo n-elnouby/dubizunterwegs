@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//DuBizUnterwegs//Launch//DE
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:launch-2026-11-10@dubizunterwegs.de
+DTSTAMP:20261028T120000Z
+DTSTART:20261110T070000Z
+DTEND:20261110T071500Z
+SUMMARY:DuBizUnterwegs ist im App Store
+DESCRIPTION:Die App für Arbeitszeit und Reisekosten ist da: https://apps.apple.com/de/app/id6760576836
+URL:https://apps.apple.com/de/app/id6760576836
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:DuBizUnterwegs ist im App Store
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -54,7 +54,7 @@
       <a href="#rechner">Rechner</a>
       <a href="#preise">Preise</a>
       <a href="#faq">FAQ</a>
-      <a class="cta" href="https://apps.apple.com/de/app/id6760576836">Laden</a>
+      <a class="cta" href="https://apps.apple.com/de/app/id6760576836" data-store="Laden">Ab 10.11.</a>
     </nav>
   </div>
 </header>
@@ -67,7 +67,7 @@
       <h1>Zeit, Reise, Belege und Tanken – in einem Rutsch.</h1>
       <p class="lead">DuBizUnterwegs erfasst Arbeitszeit, Dienstreisen, Kilometer, Tank- und Ladevorgänge und rechnet die Pauschalen nach deutschem Steuerrecht. Am Monatsende hast du ein fertiges PDF für deinen Arbeitgeber.</p>
       <div class="actions">
-        <a class="btn" href="https://apps.apple.com/de/app/id6760576836"> Im App Store laden</a>
+        <a class="btn" href="https://apps.apple.com/de/app/id6760576836" data-store=" Im App Store laden"> Ab 10. November im App Store</a>
         <a class="btn secondary" href="#rechner">Ladestrom berechnen</a>
       </div>
       <p class="note">Kostenlos starten · iPhone · Deine Daten bleiben auf deinem Gerät</p>
@@ -347,5 +347,6 @@
   vp();
 })();
 </script>
+<script>(function(){var live=Date.now()>=Date.parse('2026-11-10T07:00:00Z');document.querySelectorAll('a[data-store]').forEach(function(a){if(live){a.textContent=a.getAttribute('data-store');}else{a.removeAttribute('href');a.classList.add('soon');a.setAttribute('aria-disabled','true');}});})();</script>
 </body>
 </html>

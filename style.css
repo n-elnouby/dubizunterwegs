@@ -174,3 +174,5 @@ footer.site .copy { margin-left: auto; }
 [hidden] { display: none !important; }
 .field input[type=radio], .field input[type=checkbox] { width: auto; padding: 0; margin: 0; accent-color: var(--accent); flex: none; }
 .toggle label { justify-content: flex-start; text-align: left; line-height: 1.3; }
+
+a.soon{cursor:default;opacity:.85;pointer-events:none}

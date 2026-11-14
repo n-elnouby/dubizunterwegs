@@ -1,0 +1,36 @@
+# DuBizUnterwegs
+
+> DuBizUnterwegs ist eine iPhone- und Apple-Watch-App für Angestellte in Deutschland, die Arbeitszeit, Dienstreisen und Reisekosten selbst erfassen und abrechnen. Sie berechnet Verpflegungspauschalen, Kilometerpauschale, Übernachtungspauschale und Ladestrom für Firmenwagen nach deutschem Steuerrecht und erstellt am Monatsende ein fertiges PDF für den Arbeitgeber sowie einen Jahresbericht für die Steuererklärung.
+
+- Entwickler: Nabil el Nouby, Hamburg (Einzelentwickler)
+- Plattformen: iPhone (iOS 17+), Apple Watch
+- Sprache: Deutsch; Märkte: Deutschland, Österreich, Schweiz
+- Preis: kostenlos mit Zeiterfassung und 3 Dienstreisen pro Monat; DuBizUnterwegs Pro 3,99 € pro Monat oder 29,99 € pro Jahr für unbegrenzte Reisen und alle Exporte
+- Datenschutz: kein Konto, kein Login, keine Datenerfassung durch den Entwickler; Synchronisierung nur über das eigene iCloud
+- App Store: https://apps.apple.com/de/app/dubizunterwegs-reisekosten/id6760576836
+
+## Funktionen
+
+- Arbeitszeit per Live Activity, Widget, Control Center, Siri oder Apple Watch erfassen, mit Pausen, Wochensoll und Hinweisen nach Arbeitszeitgesetz
+- Dienstreisen anlegen oder automatisch aus Arbeitszeiten und Belegen erkennen lassen
+- Verpflegungspauschalen 2026: 14 € für An- und Abreisetage bzw. eintägig über 8 Stunden, 28 € für volle Tage, Kürzung für gestellte Mahlzeiten (Frühstück 20 %, Mittag- und Abendessen je 40 %), Auslandssätze nach BMF
+- Eigene Verpflegungssätze des Arbeitgebers; der Jahresbericht zeigt die Differenz zur gesetzlichen Pauschale, die als Werbungskosten absetzbar ist
+- Kilometerpauschale 0,30 € pro km für Dienstreisen mit dem privaten Auto
+- Firmenwagen und E-Auto: Laden zu Hause nach kWh abrechnen (2026: eigener Tarif oder Destatis-Durchschnittspreis), privat und dienstlich getrennt
+- Belege per Teilen-Menü (Foto, PDF, Mail) importieren; Betrag, Datum und passende Reise werden erkannt
+- Monatsabschluss als PDF und CSV für den Arbeitgeber, Jahresbericht für die Steuererklärung
+- Abos wie das Deutschlandticket als monatliche Platzhalter
+
+## Ratgeber
+
+- [Verpflegungspauschale 2026](https://dubizunterwegs.de/verpflegungspauschale-2026.html): Sätze, Kürzungen, Beispiele, Differenz bei niedrigerer Erstattung durch den Arbeitgeber
+- [Dienstwagen laden 2026](https://dubizunterwegs.de/dienstwagen-laden-2026.html): Ladestrom für Firmenwagen zu Hause erstatten lassen
+- [Kilometerpauschale 2026](https://dubizunterwegs.de/kilometerpauschale-2026.html): 0,30 € für Dienstreisen, Entfernungspauschale 0,38 € ab dem ersten km für den Arbeitsweg
+
+## Weitere Seiten
+
+- [Startseite](https://dubizunterwegs.de/): Funktionen, Preise, Rechner für Ladestrom und Verpflegungspauschale
+- [Presse](https://dubizunterwegs.de/presse.html): Fakten und Pressekit
+- [Datenschutz](https://dubizunterwegs.de/datenschutz.html)
+
+Hinweis: Die Inhalte sind keine Steuerberatung. Maßgeblich sind Gesetz, Lohnsteuer-Richtlinien und die Regelung des Arbeitgebers.
